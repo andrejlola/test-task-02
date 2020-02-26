@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credit calculator</title>
+</head>
+<script type="text/javascript">
+  function calculate () {
+    let result = 'Amount of credit and Months must be positive values.';
+
+    const elAmount = document.getElementById('amount');
+    const elMonths = document.getElementById('months');
+    const elResult = document.getElementById('result');
+
+    const amount = parseFloat(elAmount.value);
+    const months = parseInt(elMonths.value);
+
+    if ((!isNaN(amount) && !isNaN(months)) && (amount > 0 && months > 0)) {
+      result = (Math.round(amount / months * 100) / 100).toString();
+      result = `Monthly payment is $${result}`;
+    }
+
+    elResult.innerText = result;
+  }
+</script>
+<body>
+<div>
+  <div>Calculator</div>
+  <div>
+    <label for="amount">Amount of credit ($)</label>
+  </div>
+  <div>
+    <input id="amount" type="number" value="1000" min="1" placeholder="10000">
+  </div>
+  <div>
+    <label for="months">Months</label>
+  </div>
+  <div>
+    <input id="months" type="number" value="3">
+  </div>
+  <div>
+    <input id="calc" type="button" value="Calculate" onclick="calculate();" placeholder="12">
+  </div>
+  <div>
+    <span id="result"></span>
+  </div>
+</div>
+</body>
+</html>
